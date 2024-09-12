@@ -1,0 +1,87 @@
+#watch the console
+import turtle
+import random
+
+t = turtle.Turtle()
+t.write("origin")#koordinat asal
+t.up()
+t.goto(-100,100)
+t.down()
+t.speed(0)
+
+# arena balapan
+for i in range(15):
+    t.write(i)
+    t.right(90)
+    t.forward(200)
+    t.left(180)  
+    t.forward(200)
+    t.right(90)
+    t.forward(20)
+
+# membuat turtle pertama
+first = turtle.Turtle()
+first.shape("turtle")
+first.color("red")
+first.up()
+first.goto(-120,70)
+first.down()
+# membuat turtle kedua
+second = turtle.Turtle()
+second.shape("turtle")
+second.color("blue")
+second.up()
+second.goto(-120,40)
+second.down()
+# membuat turtle ketiga
+third = turtle.Turtle()
+third.shape("turtle")
+third.color("yellow")
+third.up()
+third.goto(-120,10) #koordinat x3,y3
+third.down()
+
+# para penggemar yang banyaknya random
+x = random.randint(1, 10) # random number from 1 to 10
+for i in range(x):
+    fan = turtle.Turtle()
+    fan.shape("turtle")
+    fan.color(0,255,255) #RGB fan.color(0,255,255)
+    fan.up()
+    fan.goto(-90+25*i,-120)
+    fan.down()
+    fan.left(90)
+
+x_first = 0
+x_second = 0
+x_third = 0
+
+#predict
+win = input ("Turtle mana yang akan menang red/blue/yellow:")
+text = turtle.Turtle()
+text.up()
+text.goto(-120,120)
+text.write("Menurut Anda pemenangnya adalah " + win)
+
+while True:
+    if x_first > 305 or x_second > 305 or x_third > 305:
+        break
+    
+    first_step = random.randint(1, 5)
+    x_first = x_first + first_step
+    first.forward(first_step)
+    
+    second_step = random.randint(1, 5)
+    x_second = x_second + second_step
+    second.forward(second_step)
+    
+    third_step = random.randint(1,5)
+    x_third = x_third + third_step
+    third.forward(third_step)
+    
+if x_first > 305:
+    t.write("red win!")
+elif x_second > 305:
+    t.write("blue win!")
+elif x_third > 305:
+    t.write("yellow win!")
